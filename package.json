@@ -1,0 +1,19 @@
+{
+  "name": "ndyt",
+  "version": "1.0.0",
+  "description": "YOUTUBE VIDEO DOWNL0ADER ",
+  "main": "server.js",
+  "scripts": {
+    "test": "dev"
+  },
+  "keywords": [
+    "MANSA"
+  ],
+  "author": "MANSA JAMI",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "ytdl-core": "^4.1.6"
+  }
+}

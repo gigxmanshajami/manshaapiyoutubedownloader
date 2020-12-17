@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+	<meta name="Keywords" content="Best youtube video downloader, #1best youtube video downloader" />
+	<meta name="robots" content="index,nofollow"/>
+	<title>YOTUBE VIDEO DOWNLOADER MADE BY MANSA</title>
+	<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+	<nav class="na-c">
+		<h2>#BEST <span class="sp2">YOUTUBE</span> VIDEO DOWNLOADER</h2>
+	</nav>
+	<form action="download/" method="GET">
+	  <div class="fEd">
+		<h1 class="h-f" >YOUTUBE VIDEO DOWNLOADER <br> BY <span>  MANSA JAMI</span> #INT HILLS</h1>
+		<input type="text" id="url-i" required autocomplete="off" autofocus class="inp-u" title="URL OF YOUTUBE VIDEO" name="url" placeholder="URL OF YOTUBE VIDEO ">
+		<button class="btn" id="btn-c" type="submit" title="DOWNLOAD">DOWNLOAD</button>
+	  </div>
+	</form>
+	<script>
+		const btn = document.getElementById('btn-c');
+		btn.addEventListener('click', () => {
+			if (document.getElementById('url-i').value !== "") {
+				btn.innerText = "DOWNLOADING....";
+				// if (document.getElementById('url-i').value !== "https") {
+				// 	alert('invalid url');
+				// }
+			}else{
+				alert('PLEASE FILL OUT THE URL FEILD');
+				btn.innerText = "DOWNLOAD";
+				return false;
+			}
+		})
+	</script>
+</body>
+</html>
