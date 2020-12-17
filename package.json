@@ -4,7 +4,8 @@
   "description": "YOUTUBE VIDEO DOWNL0ADER ",
   "main": "server.js",
   "scripts": {
-    "test": "dev"
+    "test": "dev",
+    "start": "node server.js"
   },
   "keywords": [
     "MANSA"
