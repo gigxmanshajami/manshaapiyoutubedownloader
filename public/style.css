@@ -95,7 +95,7 @@ form .btn:hover{
 	border-left: none;
 	background: var(--main-col-hover);
 }
-span {
+.spn{
 	font-family: 'Fredoka One', cursive;
     color: var(--main-col);
 }
@@ -112,7 +112,8 @@ span {
 	position: relative;
 	top: -2px;
 }
-@media screen and (max-width: 728px) {
+
+@media screen and (max-width: 800px) {
 	body{
 	    display: grid;
 	    place-items: center;

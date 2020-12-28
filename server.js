@@ -1,16 +1,15 @@
+
 /* MANSA JAMI */
+
 const express = require('express');
 const cors = require('cors');
 const ytdl = require('ytdl-core');
-const sslRedirect = require('heroku-ssl-redirect');
+var sslRedirect = require('heroku-ssl-redirect');
 const app = express();
 
-//enable ssl redirect
-app.use(sslRedirect());
-
 const PORT = process.env.PORT || 3000;
-
-app.use(express.static(__dirname + '/public'))
+app.use(express.static(__dirname + '/public'));
+app.use(sslRedirect());
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`)
 });
