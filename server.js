@@ -8,12 +8,8 @@ const session = require('cookie-session');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-app.use(express.static(__dirname + '/public'),
-	session({
-		secret: "YOUTUBE VIDEO DOWNLOADER",
-		httpOnly: true,
-		secure: true,
-	})
+app.use(express.static(__dirname + '/public')
+
 );
 
 app.listen(PORT, () => {
@@ -22,7 +18,9 @@ app.listen(PORT, () => {
 
 
 app.get('/', (req, res) => {
-    res.redirect('https://' + req.headers.host + req.url);
+	if (req.headers["x-forwarded-proto"] === "http") {
+		   res.redirect('https://' + req.headers.host + req.url);
+	}
     res.sendFile(__dirname + '/index.html');
 });
 app.get('/urldownload', (req,res) => {
