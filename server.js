@@ -14,10 +14,14 @@ app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`)
 });
 
+app.get('*', (req, res) => {
+	// use secure connection
+    res.redirect('https://' + req.headers.host + req.url);
+});
+
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
-
 app.get('/urldownload', (req,res) => {
 	var url = req.query.url;
 	res.header("Content-Disposition", 'attachment; filename="youtube-vid-mj.mp4');
