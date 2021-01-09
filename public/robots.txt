@@ -1,2 +1,3 @@
 User-agent: * Disallow:
+Sitemap: https://youtube-video-downloade-mn.herokuapp.com/sitemap.html
 Sitemap: https://youtube-video-downloade-mn.herokuapp.com/sitemap.xml
