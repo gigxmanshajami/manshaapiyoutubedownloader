@@ -1,0 +1,15 @@
+{
+  "background_color": "purple",
+  "description": "Youtube Video downloader online.",
+  "display": "fullscreen",
+  "icons": [
+    {
+      "src": "20201218_110933.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "name": "YouTube Video Downloader",
+  "short_name": "Foxes",
+  "start_url": "./server.js"
+}
