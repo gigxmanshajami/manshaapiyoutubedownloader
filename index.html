@@ -33,8 +33,9 @@
 	<meta name="robots" content="index,follow" >
      <meta name="googlebot" content="index">
 	<link rel="stylesheet" href="/style.css" >
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="shortcut icon" href="20201218_110933.png" >
-    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="manifest" href="/manifest.json">
 </head>
 <body>
 	<header class="na-c">
@@ -42,8 +43,10 @@
 	</header>
 	<form action="urldownload/" method="GET">
 	  <div class="fEd">
-		<input type="url" id="url-i" required autocomplete="off" autofocus class="inp-u" title="URL OF YOUTUBE VIDEO" name="url" placeholder="URL OF YOTUBE VIDEO ">
-		<button class="btn" id="btn-c" type="submit" title="DOWNLOAD">DOWNLOAD</button>
+		<input type="url" id="url-i" required autocomplete="off" autofocus class="inp-u" title="URL OF YOUTUBE VIDEO" name="url" placeholder="URL OF YOUTUBE VIDEO ">
+		<button class="btn" id="btn-c" type="submit" title="DOWNLOAD">    <i class="fas fa-download" ></i> 
+            DOWNLOAD
+        </button>
 	  </div>
 	</form>
 	<script>
@@ -58,12 +61,17 @@
 		});
 
 	</script>
-	<button class="add-button">Add to home screen</button>
+	<div class="addbtn-div">
+	 <center> <a href="javascript:void(0)" class="add-button">ADD YOUTUBE VIDEO DOWNLOADER TO YOUR HOME SCREEN</a></center>
+	  <div>
+          <i class="fas fa-times hidebutton" title="Close" ></i>   
+      </div>
+	</div>
 	<footer class="footer" >
 		<span class="spn" > #VERY EASY TO DOWNLOAD YOUTUBE VIDEOS <span class="line-ver">|</span> MANSA JAMI</span>
 	</footer>
 	<script type='application/ld+json'>
-    {
+     {
     "@context": "http://schema.org/",
     "@type": "SoftwareApplication",
     "applicationCategory": "MultimediaApplication",
@@ -73,48 +81,58 @@
     "alternativeHeadline": "Youtube Video Downloader",
     "copyrightYear": "2020",
     "headline": "Youtube Video Downloader",
-    "keywords": "youtube video downloader for free online, yotube  video downloader online, easy youtube video downloader, simple youtube video downloader, youtube video downloader, mansa jami,Youtube Video Downloader, youtube downloader",
+    "keywords": "youtube video downloader for free online, yotube  video downloader online, easy youtube video downloader, simple youtube video downloader, youtube video downloader, mansa jami,Youtube Video Downloader, youtube downloader, YouTube Video Downloader, YOUTUBE VIDEO DOWNLOADER",
     "offers": {
       "@type": "Offer",
       "price": "0.0",
-      "alternateName": "Youtube Video Downloader",
+      "alternateName": "YouTube Video Downloader",
       "description": "BEST YOUTUBE VIDEO DOWNLOADER FOR FREE EASY TO DOWNLOAD #DOWNLOAD NOW | EASY TO DOWNLOAD | Youtube Video Downloader",
       "mainEntityOfPage": "https://youtube-video-downloade-mn.herokuapp.com/",
       "name": "Youtube Video Downloader"
     },
     "alternateName": "Youtube Video Downloader",
     "mainEntityOfPage": "https://youtube-video-downloade-mn.herokuapp.com/",
-    "name": "Youtube Video Downloader"
-  }
+    "name": "YouTube Video Downloader"
+   }
 </script>
 <script>
 	let deferredPrompt;
-     const addBtn = document.querySelector('.add-button');
-     addBtn.style.display = 'none';
-     window.addEventListener('beforeinstallprompt', (e) => {
-  // Prevent Chrome 67 and earlier from automatically showing the prompt
-  e.preventDefault();
-  // Stash the event so it can be triggered later.
-  deferredPrompt = e;
-  // Update UI to notify the user they can add to home screen
-  addBtn.style.display = 'block';
-
-  addBtn.addEventListener('click', (e) => {
-    // hide our user interface that shows our A2HS button
-    addBtn.style.display = 'none';
-    // Show the prompt
-    deferredPrompt.prompt();
-    // Wait for the user to respond to the prompt
-    deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-          console.log('User accepted the A2HS prompt');
-        } else {
-          console.log('User dismissed the A2HS prompt');
-        }
-        deferredPrompt = null;
-      });
-  });
-});
+	const hidebtn = document.querySelector('.hidebutton');
+	const divbtn = document.querySelector('.addbtn-div');
+    const addBtn = document.querySelector('.add-button');
+    divbtn.style.display = 'none';
+    window.addEventListener('beforeinstallprompt', (e) => {
+    	e.preventDefault();
+    	deferredPrompt = e;
+    	divbtn.style.display = 'block';
+    	addBtn.addEventListener('click', (e) => {
+    		divbtn.style.display = 'none';
+    		deferredPrompt.prompt();
+    		// Wait for the user to respond to the prompt 
+    		deferredPrompt.userChoice
+    		   .then((choiceResult) => {
+    		   	  if (choiceResult.outcome === 'accepted') {
+    		   	 	console.log('User accepted the A2HS prompt');
+    		   	  }else{
+    		   	  	console.log('User dismessed the A2HS prompt');
+    		   	  }
+    		   	  deferredPrompt = null;
+    		   });
+    	});
+    });
+    hidebtn.addEventListener('click', () => {
+    	divbtn.style.display = 'none';
+    })
+	if ('serviceWorker' in navigator) {
+		window.addEventListener('load', () => {
+			navigator.serviceWorker.register('/service-worker.js').then((reg) =>{
+				console.log('Service Worker regestration successful with scope:', reg.scope);
+			}, (err) => {
+				console.log('reg failes');
+			 }
+			);
+		});
+	}
 </script>
 </body>
 </html>

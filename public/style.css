@@ -112,7 +112,38 @@ form .btn:hover{
 	position: relative;
 	top: -2px;
 }
-
+.addbtn-div{
+	transition: 0.4s all; 
+    position: absolute;
+    background: #fff;
+    bottom: 0;
+    z-index: 99;
+    width: 100%;
+    padding: 10px;
+    box-shadow: 0 0 4px #00000059;
+}
+.addbtn-div .add-button{
+	color: var(--main-col);
+	font-size: 20px;
+	width: 100%;
+	cursor: pointer;
+	text-decoration: none;
+	font-family: 'Fredoka One', cursive;
+}
+.addbtn-div div{
+	margin-top: -28px;
+	float: right;
+	margin-right: 5px;
+}
+.addbtn-div .hidebutton{
+	color: #000000;    
+    font-size: 19px;
+    cursor: pointer;
+    transition: 0.4s all;
+}
+.addbtn-div .hidebutton:hover{
+    color: #585757;
+}
 @media screen and (max-width: 800px) {
 	body{
 	    display: grid;
@@ -161,9 +192,7 @@ form .btn:hover{
     .footer span{
     	font-size: .8rem;
     }
-}
-.add-button {
-  position: absolute;
-  top: 1px;
-  left: 1px;
+    .addbtn-div .add-button{
+    	font-size: 0.8rem;
+    }
 }

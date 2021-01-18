@@ -1,6 +1,6 @@
 {
   "background_color": "purple",
-  "description": "Youtube Video downloader online.",
+  "description": "Youtube Video downloader online",
   "display": "fullscreen",
   "icons": [
     {
@@ -10,6 +10,6 @@
     }
   ],
   "name": "YouTube Video Downloader",
-  "short_name": "Foxes",
-  "start_url": "./server.js"
+  "short_name": "YouTube Video Downloader",
+  "start_url": "https://youtube-video-downloade-mn.herokuapp.com/"
 }
