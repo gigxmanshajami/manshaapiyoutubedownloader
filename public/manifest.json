@@ -1,5 +1,5 @@
 {
-  "background_color": "white",
+  "background_color": "red",
   "description": "Youtube Video downloader online",
   "display": "fullscreen",
   "icons": [
@@ -11,5 +11,7 @@
   ],
   "name": "YouTube Video Downloader",
   "short_name": "YouTube Video Downloader",
-  "start_url": "https://youtube-video-downloade-mn.herokuapp.com/"
+  "start_url": "http://localhost:3000/",
+  "theme_color": "red"
 }
+ 

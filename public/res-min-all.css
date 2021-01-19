@@ -1,0 +1,59 @@
+@media screen and (max-width: 800px) {
+	form .inp-u{
+		width: 79%;
+		font-size: 13.5px;
+	}
+    .section-about-dt .about-items li{
+    	width: 107%;
+    	margin: 0 0 0 0;
+    }
+    .btn-download{
+    	margin-top: 9px;
+    	width: 79%;
+    }
+    .na-c{
+    	text-align: left;
+    	font-size: 8px;
+    }
+    .liststep {
+    	display: block;
+    }
+    .liststep li {
+    	width: 100%;
+    	margin: 0 10px 20%!important;
+    }
+    .listicon{	margin: 20px 0 0;}
+     li .number{
+    	display: table-cell;
+    }
+    .liststep li span{
+        text-align: left;
+       display: table-cell;
+       vertical-align: middle;
+    }
+    .svg-waves{
+    	top: auto;
+    }
+    .ct-s{
+    	display: none;
+    }
+    .img-vector{
+    	width: 24%;
+    }
+    .svg-youtube-r{
+    	display: block;
+    }
+    .margin{
+    	margin-bottom: 70px;
+    }
+    .addbtn-div {
+    	padding: 10px;
+    }
+    .addbtn-div .add-button{
+    	font-size: 8.4px;
+    }
+    .yt-icon-res{
+    	width: 5% !important;
+    	margin-right: 0 !important;
+    }
+}
