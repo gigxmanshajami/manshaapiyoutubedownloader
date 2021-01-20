@@ -6,12 +6,13 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1.0" >
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="title" content="DONWLOAD YOUTUBE VIDEO FOR FREE - EASY TO DOWNLOAD" >
+    <meta name="keywords" content="youtube video downloader online">
 	<meta itemprop="description" content="BEST YOUTUBE VIDEO DOWNLOADER FOR FREE EASY TO DOWNLOAD #DOWNLOAD NOW | EASY TO DOWNLOAD ">
 	<meta name="Keywords" content="youtube video downloader for free online, yotube  video downloader online, easy youtube video downloader, simple youtube video downloader, youtube video downloader, mansa jami">
 	<meta name="description" content="BEST YOUTUBE VIDEO DOWNLOADER FOR FREE EASY TO DOWNLOAD #DOWNLOAD NOW | EASY TO DOWNLOAD">
 	<meta name="author" content="MANSA JAMi">
 	<title>DONWLOAD YOUTUBE VIDEOS FOR FREE - EASY TO DOWNLOAD</title>
-	<meta name="theme-color" content="#d7d7d7" >
+	<meta name="theme-color" content="#59e5a6" >
 	<meta name="google-site-verification" content="68WbPuotl__6LlssWJzia8IEdYwNUcrBY8HDR5Mngyg" >
       <!-- Google / Search Engine Tags -->
      <meta itemprop="name" content="DONWLOAD YOUTUBE VIDEO FOR FREE  - EASY TO DOWNLOAD">
@@ -38,8 +39,32 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 	<link rel="shortcut icon" href="20201218_110933.png" >
     <link rel="manifest" href="/manifest.json">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(() => {
+        var name,from,to,subject,text;
+    $("#send_email").click((e) => { 
+         name = $('#name').val();
+         to = "freeappstoreint@gmail.com"
+         from = $("#email").val();
+         subject = `YOUTUBE VIDEOD DOWNLOADER FEEDBACK ("${name}")`
+         text = $("#message").val();
+         $.get("/send",{name:name,from:from,to:to,subject:subject,text:text});
+    });
+});
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+   <script async src="https://www.googletagmanager.com/gtag/js?id=G-HXNKMCHVHW"></script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+
+   gtag('config', 'G-HXNKMCHVHW');
+</script>
 </head>
 <body>
+
 	<header class="na-c">
     <a href="/">
 	  <h1 class="h-f" >YOUTUBE VIDEO DOWNLOADER
@@ -66,7 +91,7 @@
         <ul class="about-items" data-aos="fade-up">
             <li  data-aos="fade-up">
                 <div class="abt-items-box-image bg1">
-                    <img src="img/clock.svg" alt="Fast Adn Easy To Use">
+                    <img src="img/clock.svg" alt="FAST">
                 </div>
                 <div class="abt-items-box-desc">
                     <h3>Fast And Easy To Use</h3>
@@ -75,16 +100,16 @@
             </li>        
             <li data-aos="fade-up">
                 <div class="abt-items-box-image bg2">
-                    <img src="img/limit.svg" alt="Fast Adn Easy To Use">
+                    <img src="img/limit.svg" alt="WITHOUT LIMITATION">
                 </div>
                 <div class="abt-items-box-desc">
                     <h3>Without limitation</h3>
-                    <p>Download and convert YouTube videos as much as you want without limitation and always free.</p>
+                    <p>Download  YouTube videos as much as you want without limitation and always free.</p>
                 </div>
             </li>  
            <li data-aos="fade-up">
                 <div class="abt-items-box-image bg3">
-                    <img src="img/safe.svg" alt="Fast Adn Easy To Use">
+                    <img src="img/safe.svg" alt="100% SAFE AND SECURE">
                 </div>
                 <div class="abt-items-box-desc">
                     <h3>100% Safe and Clean</h3>
@@ -93,7 +118,7 @@
             </li>  
            <li data-aos="fade-down">
                 <div class="abt-items-box-image bg4">
-                    <img src="img/platform.svg" alt="Fast Adn Easy To Use">
+                    <img src="img/platform.svg" alt="ALL PLATFORM SUPPORTED">
                 </div>
                 <div class="abt-items-box-desc">
                     <h3>Full platforms supported</h3>
@@ -113,11 +138,11 @@
             </li>
             <li>
                 <span class="number" >2</span>
-                <span>Choose output MP4 format and click "Download" button.</span>
+                <span>Click On "Download" Button.</span>
             </li>
             <li>
                 <span class="number" >3</span>
-                <span >Wait until the conversion is completed and download the file. Very easy and fast.</span>
+                <span >Wait For Few secoands and Downloading Will Start Automatically.</span>
             </li>
         </ul>
         <a href="#download">
@@ -132,10 +157,10 @@
  <form class="ct-s" data-aos="flip-down" >
      <div class="flow">
         <h1 class="title" >Contact Us</h1>
-         <input type="text" id="name" placeholder="Your Name" autocomplete="off" tabindex="3">
-         <input type="text" id="email" placeholder="Your Email" autocomplete="off" tabindex="4">
-         <input type="text" placeholder="Message" id="message" autocomplete="off" tabindex="5">
-         <input type="submit" value="submit" tabindex="6">
+         <input type="text" required id="name" placeholder="Your Name" autocomplete="off" tabindex="3" name="input">
+         <input type="email" required id="email" placeholder="Your Email" autocomplete="off" tabindex="4" name="input">
+         <input type="text" required placeholder="Message" id="message" autocomplete="off" tabindex="5" name="input">
+         <input type="submit" value="submit" tabindex="6" id="send_email">
      </div>
  </form>
  <div>
@@ -150,10 +175,6 @@
           <i class="fas fa-times hidebutton" title="Close" ></i>   
       </div>
 	</div>
-<!-- 	<footer class="footer" >
-		<span class="spn" > #VERY EASY TO DOWNLOAD YOUTUBE VIDEOS <span class="line-ver">|</span> MANSA JAMI</span>
-	</footer> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 	<script type='application/ld+json'>
      {
@@ -166,7 +187,7 @@
     "alternativeHeadline": "Youtube Video Downloader",
     "copyrightYear": "2020",
     "headline": "Youtube Video Downloader",
-    "keywords": "youtube video downloader for free online, yotube  video downloader online, easy youtube video downloader, simple youtube video downloader, youtube video downloader, mansa jami,Youtube Video Downloader, youtube downloader, YouTube Video Downloader, YOUTUBE VIDEO DOWNLOADER",
+    "keywords": "youtube video downloader online, youtube video downloader for free online, yotube  video downloader online, easy youtube video downloader, simple youtube video downloader, youtube video downloader, mansa jami,Youtube Video Downloader, youtube downloader, YouTube Video Downloader, YOUTUBE VIDEO DOWNLOADER",
     "offers": {
       "@type": "Offer",
       "price": "0.0",
@@ -219,7 +240,7 @@
 		});
 	}
     AOS.init({
-        offset: 50
+        offset: 70
     });
 </script>
 </body>

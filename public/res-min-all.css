@@ -1,6 +1,6 @@
 @media screen and (max-width: 800px) {
 	form .inp-u{
-		width: 79%;
+		width: 91%;
 		font-size: 13.5px;
 	}
     .section-about-dt .about-items li{
@@ -8,8 +8,8 @@
     	margin: 0 0 0 0;
     }
     .btn-download{
-    	margin-top: 9px;
-    	width: 79%;
+    	margin-top: 5px;
+    	width: 91%;
     }
     .na-c{
     	text-align: left;
