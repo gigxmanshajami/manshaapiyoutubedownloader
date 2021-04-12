@@ -29,7 +29,8 @@ var smtpTransport = nodemailer.createTransport({
 /*------------------SMTP Over-----------------------------*/
 app.get('/urldownload', (req,res) => {
 	var url = req.query.url;
-	res.header("Content-Disposition", 'attachment; filename="video-mj-yt.mp4');
+ 
+	res.header("Content-Disposition", 'attachment; filename="video.mp4');
 	ytdl(url, {format: 'mp4'}).pipe(res);
 });
 app.get('/send',function(req,res){

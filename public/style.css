@@ -29,17 +29,22 @@ body{
 }
 .na-c{
 	padding: 20px;
-	box-shadow: 0 0 9px rgb(205 205 205 / 55%);
+	/* box-shadow: 0 0 9px rgb(205 205 205 / 55%); */
     font-family: 'Balsamiq Sans', cursive;
 	font-size: .7rem;
 	text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
-    border-bottom: 1px solid #dfdfdf;
+    position: sticky;
+    top: 0;
+    border-bottom: 0.7px solid #dfdfdf;
     font-size: .7rem;
+    background-color: rgba(255,255,255,.72);
+    backdrop-filter: blur(20px);
+    z-index: 2;
 }
+
 .na-c a{
 	color: #798181;
 	text-decoration: none;
@@ -290,8 +295,20 @@ form .inp-u{
 .ct-s .flow{
 	display: grid;
 }
-.ct-s .flow input{
+.ct-s .flow input:not(:last-child){
 	font-family: 'Fredoka One', cursive;
+	outline: none;
+	border-radius: .3rem;
+	box-shadow: 4px -3px 4px #0000001f;
+	border: none;
+	margin-top: 5px;
+	padding: 10px;
+    background-color: rgba(255,255,255,.72);
+    backdrop-filter: blur(20px);
+	font-size: 15px;
+}
+.ct-s .flow #send_email{
+    font-family: 'Fredoka One', cursive;
 	outline: none;
 	border-radius: .3rem;
 	box-shadow: 4px -3px 4px #0000001f;
