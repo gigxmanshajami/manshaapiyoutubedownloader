@@ -107,6 +107,13 @@
                     <span id="titleVideo"></span>
                     <div id="appendbutton"></div>
                 </div>
+                <div>
+                    <center>
+                        <table id="mime" style="width: 60%;" border="1" cellpadding="15">
+                            <tbody></tbody>
+                        </table>
+                    </center>
+                </div>
             </div>
         </div>
         <div class="section-about-dt center" data-aos="zoom-in-up">
@@ -243,31 +250,52 @@
         const btnc = document.getElementById("btn-c");
         const urlInput = document.getElementById("url-i");
         call = () => {
-            window.location.href = `/urldownload?url=${encodeURIComponent(urlInput.value)}`;
+            window.location.href = `/urldownload?url=${encodeURIComponent(urlInput.value)}&yes=true`;
         }
         $("#loader").css("display", "none")
+        $("#mime").css("display", "none")
         divbtn.style.display = 'none';
         btnc.addEventListener("click", () => {
             $("#loader").css("display", "block")
             $("#downloadspan").css("display", "none")
-            fetch(`/urldownload?url=${encodeURIComponent(urlInput.value)}`)
+            fetch(`/urldownload?url=${encodeURIComponent(urlInput.value)}&yes=false`)
                 .then(response => {
                     $("#loader").css("display", "none")
                     $("#downloadspan").css("display", "block")
                     response.json().then((res) => {
                         // alert(res.title);
+                        const mimeData = res.infoMime;
+                        console.log(mimeData);
 
                         function appendOrReplaceElement() {
                             const video = `<iframe class="iframe"  width="auto" height="auto" src="${res.embed.iframeUrl}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen  data-aos="zoom-in-up"></iframe>`;
                             const button = `<button  data-aos="zoom-in-up" class="buttondownload" onclick="call()">Download</button > `;
                             // Check if the element already exists
+                            $("#mime").css("display", "table")
                             if ($('#thumbnail').length > 0) {
                                 // If it exists, empty the container
                                 $('#thumbnail').empty();
+                                $("#appendbutton").empty();
+                                $("#mime").empty();
                             }
-
+                            mimeData.forEach(video => {
+                                const varSp = video.mimeType.split(';')[0].trim();
+                                var aud;
+                                if (video.hasAudio === false) {
+                                    aud = false;
+                                } else {
+                                    aud = true;
+                                }
+                                const videoElement = `<tr><td><span>
+                                ${varSp}
+                                </span></td><td>${video.qualityLabel} audio:${aud}</td><td><a href="${video.url}" target="_blank">Download</a></td></tr>`;
+                                console.log(videoElement);
+                                $("#mime").append(videoElement);
+                            })
                             // Append the new paragraph to the container
                             $("#appendbutton").append(button)
+
+                            // $("#mime").append(mimeinfo)
                             $("#thumbnail").append(video);
                         }
                         appendOrReplaceElement();

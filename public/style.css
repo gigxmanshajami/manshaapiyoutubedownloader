@@ -312,9 +312,16 @@ ul {
     width: 200px;
     margin-top: 20px;
     font-size: 20px;
-    cursor: pointer;
     font-weight: 600;
+    border: 0.3px solid #000;
     box-shadow: 2px 3px 11px #ababab;
+    transition: 0.4s all;
+}
+.buttondownload:hover{
+    background-color: transparent;
+    cursor: pointer;
+    color: #000;
+    border: 0.3px solid #000;
 }
 .spn {
     font-family: 'Fredoka One', cursive;

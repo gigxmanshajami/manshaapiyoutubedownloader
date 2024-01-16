@@ -2,6 +2,7 @@
 const express = require('express');
 const cors = require('cors');
 const ytdl = require('ytdl-core');
+const fs = require('fs');
 const session = require('cookie-session');
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -27,10 +28,11 @@ var smtpTransport = nodemailer.createTransport({
     }
 });
 /*------------------SMTP Over-----------------------------*/
-app.get('/urldownload', async (req, res) => {
+app.get('/urldownload*', async (req, res) => {
     try {
         const videoUrl = req.query.url;
-        const qParameter = req.query.v;
+        const qParameter = req.query.yes;
+        console.log(qParameter);
         console.warn(videoUrl);
         // Get video information
         const info = await ytdl.getInfo(videoUrl);
@@ -42,23 +44,40 @@ app.get('/urldownload', async (req, res) => {
             thumb: info.videoDetails.thumbnails,
             duration: info.videoDetails.lengthSeconds,
             embed: info.videoDetails.embed,
+            infoMime: info.formats.sort((a, b) => {
+                return a.mimeType < b.mimeType;
+            }),
         }
-        console.log("title:", videoObj.title, "thumb", videoObj.thumb, "duration:", videoObj.duration, "embed", videoObj.embed);
+
+        console.log("title:", videoObj.title, "thumb", videoObj.thumb, "duration:", videoObj.duration, "embed", videoObj.embed, "mime", videoObj.infoMime);
 
         // Set the filename with the video title and q parameter
         const fileName = `${videoObj.title}`;
         const sanitizedFilename = fileName.replace(/[^a-zA-Z0-9_.-]/g, '_');
         // console.log(fileSantize);
-        // Set the content disposition header to force download with the filename
-        res.header("Content-Disposition", `attachment; filename="${sanitizedFilename}.mp4"`);
-        res.header("Content-Type", "video/mp4");
+        if (qParameter === "false") {
+            res.json(videoObj);
+        } else {
+        const format = ytdl.chooseFormat(info.formats, { quality: "18" });
+            console.log("hello",true);
+            const outputFilePath = `${sanitizedFilename}.mp4`;
+            const outputStream = fs.createWriteStream(outputFilePath);
+            // Set the content disposition header to force download with the filename
+            ytdl.downloadFromInfo(info, { format: format }).pipe(outputStream);
+            // When the download is complete, show a message
+            outputStream.on('finish', () => {
+                console.log(`Finished downloading: ${outputFilePath}`);
+                res.end();
+            });
+        }
+     
+        // res.header("Content-Disposition", `attachment; filename="${sanitizedFilename}.mp4"`);
+        // res.header("Content-Type", "video/mp4");
 
         // Set the content length header with the video size
-        res.header("Content-Length", videoObj.duration);
+        // res.header("Content-Length", videoObj.duration);
         // Pipe the video stream to the response
-        ytdl(videoUrl, { format: 'mp4' }).pipe(res);
-        res.json(videoObj);
-
+        // ytdl(videoUrl, { format: 'mp4' }).pipe(res);
     } catch (error) {
         console.error('Error:', error.message);
         res.status(500).json('Internal Server Error');
