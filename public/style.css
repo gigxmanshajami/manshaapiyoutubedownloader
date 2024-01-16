@@ -33,7 +33,46 @@ body {
     font-family: 'Source Sans Pro', sans-serif;
     margin-bottom: 15px;
 }
-
+/* HTML: <div class="loader"></div> */
+.loader {
+    width: 60px;
+    height: 40px;
+    position: relative;
+  }
+  .loader::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(farthest-side at bottom   ,#ffc10a 92%,#0000)   top          /30px 15px,
+      radial-gradient(farthest-side at top left ,#0000   92%,#ffc10a) bottom left / 15px 20px,
+      radial-gradient(farthest-side at top right,#0000   92%,#ffc10a) bottom right/ 15px 20px,
+      linear-gradient(#ffc10a 0 0) bottom/30px 26px;
+    background-repeat: no-repeat;
+    transform-origin: 50% -3px;
+    animation: l10-1 .5s infinite alternate linear;
+  }
+  .loader::before {
+    content: "";
+    position: absolute;
+    inset: -6px calc(50% - 10px) -10px;
+    background: 
+       radial-gradient(farthest-side,#ff9f04 90%,#0000) top   /10px 10px, 
+       radial-gradient(farthest-side,#ff9f04 90%,#0000) bottom/20px 20px;
+    background-repeat: no-repeat;
+    transform-origin: 50% 3px;
+    animation: l10-2 .5s infinite alternate linear;
+  }
+  @keyframes l10-1 {
+    0%   {transform: rotate(-30deg)}
+    100% {transform: rotate(30deg)}
+  }
+  
+  @keyframes l10-2 {
+    0%   {transform: rotate(-20deg)}
+    100% {transform: rotate(20deg)}
+  }
+  
 .na-c {
     padding: 20px;
     /* box-shadow: 0 0 9px rgb(205 205 205 / 55%); */

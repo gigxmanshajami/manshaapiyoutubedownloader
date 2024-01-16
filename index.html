@@ -96,8 +96,9 @@
                 <input data-aos="fade-up" type="url" id="url-i" required autocomplete="off" autofocus class="inp-u"
                     title="URL OF YOUTUBE VIDEO" name="url" tabindex="1" placeholder="URL OF YOUTUBE VIDEO ">
                 <button class="btn-download btn-red" tabindex="2" id="btn-c" title="DOWNLOAD">
-                    <i class="fas fa-download"></i>
-                    DOWNLOAD
+
+                    <span id="downloadspan"><i class="fas fa-download"></i>DOWNLOAD</span>
+                    <div class="loader" id="loader"></div>
                 </button>
             </div>
             <div class="metaInformation">
@@ -244,10 +245,15 @@
         call = () => {
             window.location.href = `/urldownload?url=${encodeURIComponent(urlInput.value)}`;
         }
+        $("#loader").css("display", "none")
         divbtn.style.display = 'none';
         btnc.addEventListener("click", () => {
+            $("#loader").css("display", "block")
+            $("#downloadspan").css("display", "none")
             fetch(`/urldownload?url=${encodeURIComponent(urlInput.value)}`)
                 .then(response => {
+                    $("#loader").css("display", "none")
+                    $("#downloadspan").css("display", "block")
                     response.json().then((res) => {
                         // alert(res.title);
 
@@ -268,8 +274,15 @@
                         $("#titleVideo").text(res.title);
                     })
                 }).catch(error => {
+                    $("#loader").css("display", "none")
+                    $("#downloadspan").css("display", "block")
+
                     console.error('Error:', error);
+                    alert("Error")
                 }).catch((err) => {
+                    $("#loader").css("display", "none")
+                    $("#downloadspan").css("display", "block")
+                    alert("Error")
                     console.error(err);
                 })
         })
