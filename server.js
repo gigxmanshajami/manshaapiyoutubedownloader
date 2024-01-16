@@ -16,9 +16,6 @@ app.listen(PORT, () => {
 });
 app.get('/', (req, res) => {
 
-    if (req.headers["x-forwarded-proto"] === "http") {
-        res.redirect('https://' + req.headers.host + req.url);
-    }
     res.sendFile(__dirname + '/index.html');
 });
 var smtpTransport = nodemailer.createTransport({
@@ -33,45 +30,66 @@ var smtpTransport = nodemailer.createTransport({
 app.get('/urldownload', async (req, res) => {
     try {
         const videoUrl = req.query.url;
-        const qParameter = req.query.q;
-
+        const qParameter = req.query.v;
+        console.warn(videoUrl);
         // Get video information
         const info = await ytdl.getInfo(videoUrl);
 
         // Get the video title from the information
-        const videoTitle = info.videoDetails.title;
+
+        const videoObj = {
+            title: info.videoDetails.title,
+            thumb: info.videoDetails.thumbnails,
+            duration: info.videoDetails.lengthSeconds,
+            embed: info.videoDetails.embed,
+        }
+        console.log("title:", videoObj.title, "thumb", videoObj.thumb, "duration:", videoObj.duration, "embed", videoObj.embed);
 
         // Set the filename with the video title and q parameter
-        const fileName = `${videoTitle}_q${qParameter}.mp4`;
-
+        const fileName = `${videoObj.title}`;
+        const sanitizedFilename = fileName.replace(/[^a-zA-Z0-9_.-]/g, '_');
+        // console.log(fileSantize);
         // Set the content disposition header to force download with the filename
-        res.header("Content-Disposition", `attachment; filename="${fileName}"`);
+        res.header("Content-Disposition", `attachment; filename="${sanitizedFilename}.mp4"`);
+        res.header("Content-Type", "video/mp4");
 
+        // Set the content length header with the video size
+        res.header("Content-Length", videoObj.duration);
         // Pipe the video stream to the response
         ytdl(videoUrl, { format: 'mp4' }).pipe(res);
+        res.json(videoObj);
 
     } catch (error) {
         console.error('Error:', error.message);
-        res.status(500).send('Internal Server Error');
+        res.status(500).json('Internal Server Error');
     }
 });
 app.get('/youtube.com/watch*', async (req, res) => {
     try {
+
         const videoUrl = "https://www.youtube.com/watch?v=" + req.query.v;
-        const qParameter = req.query.q;
 
         // Get video information
         const info = await ytdl.getInfo(videoUrl);
 
-        // Get the video title from the information
-        const videoTitle = info.videoDetails.title;
+        const videoObj = {
+            title: info.videoDetails.title,
+            thumb: info.videoDetails.thumbnails,
+            duration: info.videoDetails.lengthSeconds,
+            embed: info.videoDetails.embed,
+        }
 
         // Set the filename with the video title and q parameter
-        const fileName = `${videoTitle}_q${qParameter}.mp4`;
 
+        const fileName = `${videoObj.title}`;
+        const sanitizedFilename = fileName.replace(/[^a-zA-Z0-9_.-]/g, '_');
+        // console.log(fileSantize);
         // Set the content disposition header to force download with the filename
-        res.header("Content-Disposition", `attachment; filename="${fileName}"`);
+        res.header("Content-Disposition", `attachment; filename="${sanitizedFilename}.mp4"`);
+        res.header("Content-Type", "video/mp4");
 
+        // Set the content length header with the video size
+        res.header("Content-Length", videoObj.duration);
         // Pipe the video stream to the response
         ytdl(videoUrl, { format: 'mp4' }).pipe(res);
 

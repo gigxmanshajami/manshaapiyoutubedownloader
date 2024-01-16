@@ -1,16 +1,16 @@
 {
   "name": "ndyt",
-  "version": "1.0.0",
-  "description": "YOUTUBE VIDEO DOWNL0ADER ",
+  "version": "1.0.1",
+  "description": "YOUTUBE VIDEO DOWNLADER ",
   "main": "server.js",
   "scripts": {
     "test": "dev",
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "keywords": [
-    "youtube video downloader"
+    "Youtube video downlader"
   ],
-  "author": "MANSA JAMI",
+  "author": "MANSHA JAMI",
   "license": "ISC",
   "dependencies": {
     "cookie-session": "^1.4.0",
