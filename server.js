@@ -12,6 +12,10 @@ const queryString = require('querystring');
 app.use(express.static(__dirname + '/public')
 
 );
+let corsoP = {
+    origin : ['https://mansha.onrender.com/'],
+}
+app.use(cors(corsoP));
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`)
 });
