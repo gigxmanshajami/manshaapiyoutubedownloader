@@ -303,13 +303,13 @@
                     })
                 }).catch(error => {
                     $("#loader").css("display", "none")
-                    $("#downloadspan").css("display", "block")
+                    $("#downloadspan").css("display", "none")
 
                     console.error('Error:', error);
                     alert("Error")
                 }).catch((err) => {
                     $("#loader").css("display", "none")
-                    $("#downloadspan").css("display", "block")
+                    $("#downloadspan").css("display", "none")
                     alert("Error")
                     console.error(err);
                 })
