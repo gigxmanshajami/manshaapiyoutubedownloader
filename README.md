@@ -1,7 +1,7 @@
 
 # YouTube Video Downloader with Node.js and ytdl-core
 
-Welcome to our YouTube video downloader, powered by Node.js and ytdl-core! This project provides a simple yet powerful way to download YouTube videos directly from your terminal or browser. No more hassle with online converters or complicated software – with just a few lines of code or a click of a button, you can have your favorite YouTube videos saved locally for offline viewing.
+Welcome to our YouTube video downloader, powered by Node.js and ytdl-core! This project provides a simple yet powerful way to download YouTube videos directly from your browser. No more hassle with online converters or complicated software – with just a few lines of code or a click of a button, you can have your favorite YouTube videos saved locally for offline viewing.
 
 # Features
 
